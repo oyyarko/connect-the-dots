@@ -149,12 +149,10 @@ function App() {
                   ) ? (
                     <div
                       className={`${
-                        value === null
-                          ? "text-white bg-violet-600"
-                          : value
+                        value
                           ? "bg-amber-300"
                           : "bg-rose-400"
-                      }  rounded-full p-5 border-zinc-800 border-2 inside-border text-4xl w-4 h-4 items-center flex justify-center`}
+                      } rotate-45  rounded-full p-5 border-zinc-800 border-2 inside-border text-6xl w-4 h-4 items-center flex justify-center`}
                     >
                       {value === null ? "" : "+"}
                     </div>
