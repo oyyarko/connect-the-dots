@@ -7,7 +7,7 @@ function App() {
       .map(() => Array(7).fill(null))
   );
 
-  const [currentUser, setCurrentUser] = useState(1);
+  const [currentUser, setCurrentUser] = useState(true);
 
   function checkConsecutiveMatching(matrix) {
     const numRows = matrix.length;
@@ -121,7 +121,6 @@ function App() {
       <div className="bg-white p-3 pb-6 rounded-3xl border-b-8 border-black border-2">
         <div className="flex flex-col gap-3">
           {/* <Score /> */}
-          {console.log('currentUser', currentUser)}
           {matrices.map((rows, rowIndexTop) => (
             <div key={rowIndexTop} className="bg-white flex gap-2">
               {rows.map((value, colIndexTop) => (
@@ -134,7 +133,11 @@ function App() {
                       return prev.map((row, rowIndex) =>
                         rowIndex === rowIndexTop
                           ? row.map((cell, colIndex) =>
-                              colIndex === colIndexTop ? 1 : cell
+                              colIndex === colIndexTop
+                                ? currentUser
+                                  ? 1
+                                  : 0
+                                : cell
                             )
                           : row
                       );
@@ -148,22 +151,22 @@ function App() {
                       className={`${
                         value === null
                           ? "text-white bg-violet-600"
-                          : currentUser
-                          ? "bg-amber-300 text-slate-400"
+                          : value
+                          ? "bg-amber-300"
                           : "bg-rose-400"
-                      }  rounded-full p-5 border-zinc-800 border-2 inside-border  -mt-1`}
+                      }  rounded-full p-5 border-zinc-800 border-2 inside-border text-4xl w-4 h-4 items-center flex justify-center`}
                     >
-                      {/* {value === null ? "" : value} */}
+                      {value === null ? "" : "+"}
                     </div>
                   ) : (
                     <div
                       className={`${
                         value === null
                           ? "text-white bg-violet-600"
-                          : currentUser
+                          : value
                           ? "bg-amber-300 text-slate-400"
                           : "bg-rose-400"
-                      }  rounded-full p-5 border-zinc-800 border-2 inside-border  -mt-1`}
+                      }  rounded-full p-5 border-zinc-800 border-2 inside-border`}
                     >
                       {/* {value === null ? "" : value} */}
                     </div>
